@@ -15,11 +15,11 @@ class MovieListViewModel : ViewModel() {
         viewModelScope.launch {
             _movieListLiveData.postValue(
                 listOf(
-                    MovieModel("1", "One"),
-                    MovieModel("2", "Two"),
-                    MovieModel("3", "Three"),
-                    MovieModel("4", "Four"),
-                    MovieModel("5", "Five"),
+                    MovieModel(1, "One"),
+                    MovieModel(2, "Two"),
+                    MovieModel(3, "Three"),
+                    MovieModel(4, "Four"),
+                    MovieModel(5, "Five"),
                 )
             )
         }
