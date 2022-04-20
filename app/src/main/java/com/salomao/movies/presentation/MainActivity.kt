@@ -1,7 +1,8 @@
-package com.salomao.movies
+package com.salomao.movies.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.salomao.movies.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
