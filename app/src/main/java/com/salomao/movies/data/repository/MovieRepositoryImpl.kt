@@ -1,6 +1,5 @@
 package com.salomao.movies.data.repository
 
-import com.salomao.movies.BuildConfig
 import com.salomao.movies.data.mapper.MovieMapper.toModel
 import com.salomao.movies.data.service.MovieService
 import com.salomao.movies.domain.model.MovieModel
@@ -21,7 +20,6 @@ class MovieRepositoryImpl(
             try {
                 val response = movieService.getMovieList(
                     page = page,
-                    api_key = BuildConfig.MOVIE_DB_KEY,
                     language = language
                 )
                 val movieModelList = response.results.map {
@@ -37,8 +35,6 @@ class MovieRepositoryImpl(
     override suspend fun fetchMovieById(movieId: Int): ResultState<MovieModel?> =
         withContext(contextProvider.IO) {
             try {
-//                val movieList = getFakeList()
-//                val movieById = movieList.firstOrNull { it.id == movieId }
                 ResultState.Success(null)
             } catch (e: Exception) {
                 e.printStackTrace()

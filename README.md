@@ -3,7 +3,10 @@
 ## Special Configs ##
   - Kotlin
   - Retrofit2
-  - OkHttp  
+  - OkHttp
+    - Header authentication
+    - Timeout
+    - Log on every request
   - MVVM <br>
   - Navigation <br>
   - Clean Architecture - Only use folder to encapsulate then but depending on the size of the project would be good to encapsulate by modules.

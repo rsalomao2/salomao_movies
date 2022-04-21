@@ -18,8 +18,8 @@ internal fun createOkHttpClient(): OkHttpClient {
     val logging = HttpLoggingInterceptor()
     logging.level = HttpLoggingInterceptor.Level.BODY
     val okHttpClient = OkHttpClient.Builder()
-    okHttpClient.connectTimeout(60, TimeUnit.SECONDS)
-    okHttpClient.readTimeout(60, TimeUnit.SECONDS)
+    okHttpClient.connectTimeout(10, TimeUnit.SECONDS)
+    okHttpClient.readTimeout(10, TimeUnit.SECONDS)
     okHttpClient.addInterceptor(logging)
     okHttpClient.addInterceptor(Interceptor {
         val original = it.request()
@@ -47,5 +47,5 @@ internal inline fun <reified T> createRetrofit(okHttpClient: OkHttpClient): T {
         .client(okHttpClient)
         .build()
 
-    return retrofit.create<T>(T::class.java)
+    return retrofit.create(T::class.java)
 }

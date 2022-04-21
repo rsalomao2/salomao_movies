@@ -9,6 +9,6 @@ class GetMovieListUseCaseImpl(
 ) : GetMovieListUseCase {
     private var page = 0
     override suspend fun invoke(): ResultState<List<MovieModel>> {
-        return repository.fetchMovieList(++page)
+        return repository.fetchMovieList(page++)
     }
 }
