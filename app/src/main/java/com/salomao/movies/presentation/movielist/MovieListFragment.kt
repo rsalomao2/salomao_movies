@@ -6,24 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import org.koin.android.viewmodel.ext.android.viewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.salomao.movies.R
 import com.salomao.movies.databinding.FragmentMovieListBinding
+import com.salomao.movies.domain.di.injectMovieListKoin
 import com.salomao.movies.domain.model.MovieModel
 
 class MovieListFragment : Fragment() {
     private lateinit var movieAdapter: MoviesAdapter
     private var _binding: FragmentMovieListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<MovieListViewModel>()
+    private val viewModel by viewModel<MovieListViewModel>()
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        injectMovieListKoin()
         _binding = FragmentMovieListBinding.inflate(inflater)
         return binding.root
     }

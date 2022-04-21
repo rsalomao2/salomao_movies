@@ -5,19 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.salomao.movies.databinding.FragmentMovieDetailsBinding
+import com.salomao.movies.domain.di.injectMovieDetailKoin
 import com.salomao.movies.presentation.movielist.MovieListFragment.Companion.ARGS_MOVIE_ID
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetailsFragment : Fragment() {
     private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<MovieDetailViewModel>()
+    private val viewModel by viewModel<MovieDetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        injectMovieDetailKoin()
         _binding = FragmentMovieDetailsBinding.inflate(inflater)
         return binding.root
     }
