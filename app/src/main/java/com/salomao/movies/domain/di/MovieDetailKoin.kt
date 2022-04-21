@@ -1,10 +1,8 @@
 package com.salomao.movies.domain.di
 
-import com.salomao.movies.data.repository.MovieRepositoryImpl
-import com.salomao.movies.domain.repository.MovieRepository
 import com.salomao.movies.domain.usecase.GetMovieByIdUseCase
 import com.salomao.movies.domain.usecase.GetMovieByIdUseCaseImpl
-import com.salomao.movies.presentation.movielist.MovieListViewModel
+import com.salomao.movies.presentation.moviedetail.MovieDetailViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
@@ -14,7 +12,6 @@ fun injectMovieDetailKoin() = loadKoinModule
 
 private val loadKoinModule by lazy {
     loadKoinModules(
-        repositoryModule,
         viewModelModule,
         useCaseModule
     )
@@ -22,14 +19,10 @@ private val loadKoinModule by lazy {
 
 private val viewModelModule: Module = module {
     viewModel {
-        MovieListViewModel(
-            getMovieListUseCase = get()
+        MovieDetailViewModel(
+            getMovieByIdUseCase = get()
         )
     }
-}
-
-private val repositoryModule = module {
-    single<MovieRepository> { MovieRepositoryImpl(contextProvider = get()) }
 }
 
 private val useCaseModule = module {
