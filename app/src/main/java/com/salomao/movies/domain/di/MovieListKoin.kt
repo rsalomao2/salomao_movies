@@ -1,6 +1,8 @@
 package com.salomao.movies.domain.di
 
 import com.salomao.movies.data.repository.MovieRepositoryImpl
+import com.salomao.movies.data.service.MovieService
+import com.salomao.movies.domain.builder.createRetrofit
 import com.salomao.movies.domain.repository.MovieRepository
 import com.salomao.movies.domain.usecase.GetMovieListUseCase
 import com.salomao.movies.domain.usecase.GetMovieListUseCaseImpl
@@ -14,22 +16,28 @@ fun injectMovieListKoin() = loadKoinModule
 
 private val loadKoinModule by lazy {
     loadKoinModules(
+        serviceModule,
         repositoryModule,
         viewModelModule,
         useCaseModule
     )
 }
 
+private val serviceModule = module {
+    single { createRetrofit<MovieService>(okHttpClient = get()) }
+}
+
 private val viewModelModule: Module = module {
     viewModel {
         MovieListViewModel(
-            getMovieListUseCase = get()
+            getMovieListUseCase = get(),
+            stringProvider = get()
         )
     }
 }
 
 private val repositoryModule = module {
-    single<MovieRepository> { MovieRepositoryImpl(contextProvider = get()) }
+    single<MovieRepository> { MovieRepositoryImpl(contextProvider = get(), movieService = get()) }
 }
 
 private val useCaseModule = module {

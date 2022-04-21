@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import org.koin.android.viewmodel.ext.android.viewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.salomao.movies.R
 import com.salomao.movies.databinding.FragmentMovieListBinding
 import com.salomao.movies.domain.di.injectMovieListKoin
 import com.salomao.movies.domain.model.MovieModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieListFragment : Fragment() {
     private lateinit var movieAdapter: MoviesAdapter
@@ -38,6 +40,31 @@ class MovieListFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        observeMovieList()
+        observeErrorMessages()
+        observeShowEmptyListView()
+        observeLoadingView()
+    }
+
+    private fun observeLoadingView() {
+        viewModel.showLoadingLiveData.observe(viewLifecycleOwner){ show ->
+            binding.progressBar.container.isVisible = show
+        }
+    }
+
+    private fun observeShowEmptyListView() {
+        viewModel.showEmptyLiveData.observe(viewLifecycleOwner) { show ->
+            binding.emptyMovieList.container.isVisible = show
+        }
+    }
+
+    private fun observeErrorMessages() {
+        viewModel.errorMessageLiveData.observe(viewLifecycleOwner) { errorMessage ->
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun observeMovieList() {
         viewModel.movieListLiveData.observe(viewLifecycleOwner) { newList ->
             movieAdapter.updateMovies(newList)
         }

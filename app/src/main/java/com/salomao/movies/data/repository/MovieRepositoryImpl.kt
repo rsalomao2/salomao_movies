@@ -1,5 +1,8 @@
 package com.salomao.movies.data.repository
 
+import com.salomao.movies.BuildConfig
+import com.salomao.movies.data.mapper.MovieMapper.toModel
+import com.salomao.movies.data.service.MovieService
 import com.salomao.movies.domain.model.MovieModel
 import com.salomao.movies.domain.model.ResultState
 import com.salomao.movies.domain.provider.CoroutineContextProvider
@@ -7,14 +10,26 @@ import com.salomao.movies.domain.repository.MovieRepository
 import kotlinx.coroutines.withContext
 
 class MovieRepositoryImpl(
+    private val movieService: MovieService,
     private val contextProvider: CoroutineContextProvider,
 ) : MovieRepository {
-    override suspend fun fetchMovieList(): ResultState<List<MovieModel>> =
+    override suspend fun fetchMovieList(
+        page: Int,
+        language: String
+    ): ResultState<List<MovieModel>> =
         withContext(contextProvider.IO) {
             try {
-                val movieList = getFakeList()
-                ResultState.Success(movieList)
+                val response = movieService.getMovieList(
+                    page = page,
+                    api_key = BuildConfig.MOVIE_DB_KEY,
+                    language = language
+                )
+                val movieModelList = response.results.map {
+                    it.toModel()
+                }
+                ResultState.Success(movieModelList)
             } catch (e: Exception) {
+                e.printStackTrace()
                 ResultState.Error(e.message ?: "Unable to fetch Movie List")
             }
         }
@@ -22,19 +37,12 @@ class MovieRepositoryImpl(
     override suspend fun fetchMovieById(movieId: Int): ResultState<MovieModel?> =
         withContext(contextProvider.IO) {
             try {
-                val movieList = getFakeList()
-                val movieById = movieList.firstOrNull { it.id == movieId }
-                ResultState.Success(movieById)
+//                val movieList = getFakeList()
+//                val movieById = movieList.firstOrNull { it.id == movieId }
+                ResultState.Success(null)
             } catch (e: Exception) {
+                e.printStackTrace()
                 ResultState.Error(e.message ?: "Unable to find Movie by id: $movieId")
             }
         }
-
-    private fun getFakeList(): List<MovieModel> {
-        val list = mutableListOf<MovieModel>()
-        for (i in 1..100) {
-            list.add(MovieModel(i, "Item $i"))
-        }
-        return list
-    }
 }

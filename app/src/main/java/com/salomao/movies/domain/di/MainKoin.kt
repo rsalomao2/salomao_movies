@@ -4,7 +4,10 @@ import android.app.Application
 import com.salomao.movies.domain.builder.createOkHttpClient
 import com.salomao.movies.domain.provider.CoroutineContextProvider
 import com.salomao.movies.domain.provider.CoroutineContextProviderImpl
+import com.salomao.movies.domain.provider.StringProvider
+import com.salomao.movies.domain.provider.StringProviderImpl
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.with
 import org.koin.dsl.module.module
 import org.koin.standalone.StandAloneContext
@@ -27,5 +30,6 @@ private val networkModule = module {
 }
 
 private val providerModule = module {
+    single<StringProvider> { StringProviderImpl(androidContext()) }
     single<CoroutineContextProvider> { CoroutineContextProviderImpl() }
 }
