@@ -1,4 +1,4 @@
-package com.salomao.movies.domain
+package com.salomao.movies.domain.model
 
 data class MovieModel(
     val id: Int,

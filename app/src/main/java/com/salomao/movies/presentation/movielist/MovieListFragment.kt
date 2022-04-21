@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.salomao.movies.R
 import com.salomao.movies.databinding.FragmentMovieListBinding
-import com.salomao.movies.domain.MovieModel
+import com.salomao.movies.domain.model.MovieModel
 
 class MovieListFragment : Fragment() {
     private lateinit var movieAdapter: MoviesAdapter

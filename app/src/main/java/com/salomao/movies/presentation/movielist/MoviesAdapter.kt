@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.salomao.movies.R
 import com.salomao.movies.databinding.LayoutMovieListItemBinding
-import com.salomao.movies.domain.MovieModel
+import com.salomao.movies.domain.model.MovieModel
 
 class MoviesAdapter(
     private val onItemClick: (MovieModel) -> (Unit)
