@@ -1,7 +1,9 @@
 package com.salomao.movies.data.mapper
 
 import com.salomao.movies.domain.Constants
+import com.salomao.movies.domain.model.GenreModel
 import com.salomao.movies.domain.model.MovieModel
+import com.salomao.movies.remote.GenreResponse
 import com.salomao.movies.remote.MovieResponse
 
 object MovieMapper {
@@ -13,5 +15,10 @@ object MovieMapper {
         score = score,
         releaseDate = releaseDate,
         genreIdList = genreIdList
+    )
+
+    fun GenreResponse.toModel() = GenreModel(
+        id = id,
+        name = name
     )
 }
