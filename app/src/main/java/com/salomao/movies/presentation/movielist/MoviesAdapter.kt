@@ -2,9 +2,7 @@ package com.salomao.movies.presentation.movielist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.salomao.movies.R
 import com.salomao.movies.databinding.LayoutMovieListItemBinding
 import com.salomao.movies.domain.model.MovieModel
 
@@ -14,14 +12,8 @@ class MoviesAdapter(
     private var items: MutableList<MovieModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = DataBindingUtil.inflate<LayoutMovieListItemBinding>(
-            inflater,
-            R.layout.layout_movie_list_item,
-            parent,
-            false
-        )
+        val binding =
+            LayoutMovieListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MyViewHolder(binding)
     }

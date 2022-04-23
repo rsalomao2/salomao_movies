@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/movieListFragment">
+    app:startDestination="@id/catListFragment">
 
     <fragment
         android:id="@+id/movieListFragment"
@@ -19,4 +19,8 @@
         android:name="com.salomao.movies.presentation.moviedetail.MovieDetailsFragment"
         android:label="Movie Details"
         tools:layout="@layout/fragment_movie_details" />
+    <fragment
+        android:id="@+id/catListFragment"
+        android:name="com.salomao.movies.presentation.delete.CatListFragment"
+        android:label="CatListFragment" />
 </navigation>
