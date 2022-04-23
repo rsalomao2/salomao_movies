@@ -1,7 +1,7 @@
 package com.salomao.movies.domain.model
 
 data class MovieModel(
-    val id: Long,
+    val id: Int,
     val name: String,
     val description: String,
     val thumbnailUrl: String,

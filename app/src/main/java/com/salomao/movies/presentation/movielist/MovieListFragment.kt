@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.salomao.movies.R
 import com.salomao.movies.databinding.FragmentMovieListBinding
 import com.salomao.movies.domain.di.injectMovieListKoin
 import com.salomao.movies.presentation.model.MovieLitItemUiState
@@ -60,15 +63,10 @@ class MovieListFragment : Fragment() {
     }
 
     private fun onMovieClicked(movieUiState: MovieLitItemUiState) {
-//        findNavController().navigate(
-//            R.id.action_movieListFragment_to_movieDetailsFragment,
-//            bundleOf(ARGS_MOVIE_ID to movieUiState.id)
-//        )
-        Toast.makeText(
-            requireContext(),
-            "You have clicked in ${movieUiState.name}",
-            Toast.LENGTH_LONG
-        ).show()
+        findNavController().navigate(
+            R.id.action_movieListFragment_to_movieDetailsFragment,
+            bundleOf(ARGS_MOVIE_ID to movieUiState.id)
+        )
     }
 
     companion object {

@@ -7,7 +7,7 @@ data class MovieListResponse(
 )
 
 data class MovieResponse(
-    @SerializedName("id") val id: Long,
+    @SerializedName("id") val id: Int,
     @SerializedName("original_language") val originalLanguage: String,
     @SerializedName("title") val title: String,
     @SerializedName("overview") val description: String,

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.salomao.movies.databinding.FragmentMovieDetailsBinding
+import com.salomao.movies.presentation.movielist.MovieListFragment
 
 class MovieDetailsFragment : Fragment() {
     private var _binding: FragmentMovieDetailsBinding? = null
@@ -17,6 +18,12 @@ class MovieDetailsFragment : Fragment() {
     ): View {
         _binding = FragmentMovieDetailsBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val clickedMovieId = arguments?.getInt(MovieListFragment.ARGS_MOVIE_ID)
+        binding.tvTitle.text = "Clicked Item ID: $clickedMovieId"
     }
 
     override fun onDestroy() {
