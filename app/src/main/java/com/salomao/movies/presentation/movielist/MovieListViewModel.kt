@@ -7,15 +7,16 @@ import androidx.paging.map
 import com.salomao.movies.domain.model.MovieModel
 import com.salomao.movies.domain.provider.DateProvider
 import com.salomao.movies.domain.repository.MovieRepository
+import com.salomao.movies.domain.usecase.GetMovieListUseCase
 import com.salomao.movies.presentation.model.MovieLitItemUiState
 import kotlinx.coroutines.flow.map
 
 class MovieListViewModel(
-    repository: MovieRepository,
-    private val dateProvider: DateProvider,
+    getMovieListUseCase: GetMovieListUseCase,
+    private val dateProvider: DateProvider
 ) : ViewModel() {
 
-    val listLiveData = repository.fetchMovieList().map { pagingData ->
+    val listLiveData = getMovieListUseCase.invoke().map { pagingData ->
         pagingData.map { movieModel ->
             movieModel.toMovieUiState()
         }

@@ -29,7 +29,7 @@ private val serviceModule = module {
 
 private val viewModelModule: Module = module {
     viewModel {
-        MovieListViewModel(repository = get(), dateProvider = get())
+        MovieListViewModel(getMovieListUseCase = get(), dateProvider = get())
     }
 }
 

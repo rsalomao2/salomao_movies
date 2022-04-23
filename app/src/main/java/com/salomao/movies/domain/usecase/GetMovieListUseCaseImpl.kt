@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class GetMovieListUseCaseImpl(
     private val repository: MovieRepository
 ) : GetMovieListUseCase {
-    override suspend fun invoke(): Flow<PagingData<MovieModel>> {
+    override fun invoke(): Flow<PagingData<MovieModel>> {
         return repository.fetchMovieList()
     }
 }
