@@ -1,17 +1,9 @@
 package com.salomao.movies.domain.repository
 
+import androidx.paging.PagingData
 import com.salomao.movies.domain.model.MovieModel
-import com.salomao.movies.domain.model.ResultState
+import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    suspend fun fetchMovieList(
-        page: Int,
-        language: String = DEFAULT_LANGUAGE
-    ): ResultState<List<MovieModel>>
-
-    suspend fun fetchMovieById(movieId: Int): ResultState<MovieModel?>
-
-    private companion object {
-        const val DEFAULT_LANGUAGE = "en-US"
-    }
+    fun fetchMovieList(): Flow<PagingData<MovieModel>>
 }

@@ -13,4 +13,6 @@ data class MovieResponse(
     @SerializedName("overview") val description: String,
     @SerializedName("poster_path") val thumbnailUrl: String,
     @SerializedName("vote_average") val score: Float,
+    @SerializedName("release_date") val releaseDate: String,
+    @SerializedName("genre_ids") val genreIdList: List<Int>,
 )

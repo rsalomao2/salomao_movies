@@ -1,14 +1,14 @@
 package com.salomao.movies.domain.usecase
 
+import androidx.paging.PagingData
 import com.salomao.movies.domain.model.MovieModel
-import com.salomao.movies.domain.model.ResultState
 import com.salomao.movies.domain.repository.MovieRepository
+import kotlinx.coroutines.flow.Flow
 
 class GetMovieListUseCaseImpl(
     private val repository: MovieRepository
 ) : GetMovieListUseCase {
-    private var page = 0
-    override suspend fun invoke(): ResultState<List<MovieModel>> {
-        return repository.fetchMovieList(page++)
+    override suspend fun invoke(): Flow<PagingData<MovieModel>> {
+        return repository.fetchMovieList()
     }
 }

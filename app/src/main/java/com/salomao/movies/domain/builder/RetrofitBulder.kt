@@ -2,7 +2,6 @@ package com.salomao.movies.domain.builder
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.salomao.movies.BuildConfig.MOVIE_DB_TOKEN
-import com.salomao.movies.data.service.CatService
 import java.util.NoSuchElementException
 import java.util.concurrent.TimeUnit
 import okhttp3.Interceptor
@@ -12,10 +11,8 @@ import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Headers
 
 private const val BASE_URL = "https://api.themoviedb.org/"
-//private const val BASE_URL = "https://api.unsplash.com/"
 
 internal fun createOkHttpClient(): OkHttpClient {
     val logging = HttpLoggingInterceptor()
@@ -28,9 +25,7 @@ internal fun createOkHttpClient(): OkHttpClient {
         val original = it.request()
         val request = original.newBuilder()
             .header("Content-Type", "application/json;charset=utf-8")
-//            .header("Accept-Version", "v1")
             .header("Authorization", "Bearer $MOVIE_DB_TOKEN")
-//            .header("Authorization", "Client-ID ${CatService.CLIENT_ID}")
             .method(original.method, original.body)
             .build()
         try {

@@ -6,9 +6,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MovieService {
+
     @GET("${BuildConfig.MOVIE_DB_API_VERSION}/movie/popular")
-    suspend fun getMovieList(
+    suspend fun fetchMovieList(
         @Query("page") page: Int,
         @Query("language") language: String,
+        @Query("per_page") perPage: Int
     ): MovieListResponse
 }

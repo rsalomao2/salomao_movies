@@ -29,15 +29,12 @@ private val serviceModule = module {
 
 private val viewModelModule: Module = module {
     viewModel {
-        MovieListViewModel(
-            getMovieListUseCase = get(),
-            stringProvider = get()
-        )
+        MovieListViewModel(repository = get(), dateProvider = get())
     }
 }
 
 private val repositoryModule = module {
-    single<MovieRepository> { MovieRepositoryImpl(contextProvider = get(), movieService = get()) }
+    single<MovieRepository> { MovieRepositoryImpl(movieService = get()) }
 }
 
 private val useCaseModule = module {

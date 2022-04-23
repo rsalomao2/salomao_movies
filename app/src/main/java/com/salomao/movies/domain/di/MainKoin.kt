@@ -4,6 +4,8 @@ import android.app.Application
 import com.salomao.movies.domain.builder.createOkHttpClient
 import com.salomao.movies.domain.provider.CoroutineContextProvider
 import com.salomao.movies.domain.provider.CoroutineContextProviderImpl
+import com.salomao.movies.domain.provider.DateProvider
+import com.salomao.movies.domain.provider.DateProviderImpl
 import com.salomao.movies.domain.provider.StringProvider
 import com.salomao.movies.domain.provider.StringProviderImpl
 import okhttp3.OkHttpClient
@@ -31,5 +33,6 @@ private val networkModule = module {
 
 private val providerModule = module {
     single<StringProvider> { StringProviderImpl(androidContext()) }
+    single<DateProvider> { DateProviderImpl() }
     single<CoroutineContextProvider> { CoroutineContextProviderImpl() }
 }
