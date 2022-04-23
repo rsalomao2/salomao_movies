@@ -26,8 +26,8 @@ Like so:<br><br>
 
 ### General requirements ### <br>
 * [x] Load Movies from Movie DB
-* [ ] Paginate the requests
-* [ ] Works on LandScape
+* [x] Paginate the requests
+* [x] Works on LandScape
 * [x] Works on Portrait
 * [x] README file
 * [ ] Instructions required to build and run the app
@@ -41,9 +41,9 @@ Like so:<br><br>
 * [x] Display Movie list
 * [x] Display Movie Thumbnail
 * [x] Display Movie Title
-* [ ] Display Movie Score
-* [ ] Display Movie Release Year
-* [ ] Display Movie Genre
+* [x] Display Movie Score
+* [x] Display Movie Release Year
+* [x] Display Movie Genre
 
 ### Detail Screen requiements ###
 * [ ] Display Movie Thumbnail
