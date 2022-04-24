@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 class GetMovieDetailUseCaseImpl(
     private val repository: MovieRepository
 ) : GetMovieDetailUseCase {
-    override fun invoke(movieId: Int): Flow<MovieDetailModel> {
-        return repository.fetchMovieDetails(movieId)
-    }
+    override fun invoke(movieId: Int): Flow<MovieDetailModel> =
+        repository.fetchMovieDetails(movieId)
 }
