@@ -24,14 +24,14 @@ class MovieDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieDetailsBinding.inflate(inflater)
+        injectMovieDetailKoin()
+        val clickedMovieId = arguments?.getInt(MovieListFragment.ARGS_MOVIE_ID)
+        viewModel.loadMovieDetail(clickedMovieId)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        injectMovieDetailKoin()
-        val clickedMovieId = arguments?.getInt(MovieListFragment.ARGS_MOVIE_ID)
-        viewModel.loadMovieDetail(clickedMovieId)
         setupObservers()
     }
 

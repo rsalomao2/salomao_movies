@@ -24,18 +24,17 @@ class MovieListFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModel<MovieListViewModel>()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieListBinding.inflate(inflater)
+        injectMovieListKoin()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        injectMovieListKoin()
         setupRecycleView()
         setupObservers()
     }
