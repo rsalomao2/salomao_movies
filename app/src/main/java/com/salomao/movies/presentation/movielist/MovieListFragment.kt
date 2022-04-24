@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.salomao.movies.R
 import com.salomao.movies.databinding.FragmentMovieListBinding
 import com.salomao.movies.domain.di.injectMovieListKoin
 import com.salomao.movies.presentation.model.MovieLitItemUiState
@@ -20,18 +24,17 @@ class MovieListFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModel<MovieListViewModel>()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieListBinding.inflate(inflater)
+        injectMovieListKoin()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        injectMovieListKoin()
         setupRecycleView()
         setupObservers()
     }
@@ -42,6 +45,28 @@ class MovieListFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        observeMovieList()
+        observeEmptyListView()
+        observeErrorMessage()
+    }
+
+    private fun observeErrorMessage() {
+        lifecycleScope.launchWhenCreated {
+            viewModel.errorMessageFlow.collectLatest { errorMessage ->
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun observeEmptyListView() {
+        lifecycleScope.launchWhenCreated {
+            viewModel.showEmptyListViewFlow.collectLatest { show ->
+                binding.emptyMovieList.container.isVisible = show
+            }
+        }
+    }
+
+    private fun observeMovieList() {
         lifecycleScope.launchWhenCreated {
             viewModel.listLiveData.collectLatest {
                 movieAdapter.submitData(it)
@@ -60,15 +85,10 @@ class MovieListFragment : Fragment() {
     }
 
     private fun onMovieClicked(movieUiState: MovieLitItemUiState) {
-//        findNavController().navigate(
-//            R.id.action_movieListFragment_to_movieDetailsFragment,
-//            bundleOf(ARGS_MOVIE_ID to movieUiState.id)
-//        )
-        Toast.makeText(
-            requireContext(),
-            "You have clicked in ${movieUiState.name}",
-            Toast.LENGTH_LONG
-        ).show()
+        findNavController().navigate(
+            R.id.action_movieListFragment_to_movieDetailsFragment,
+            bundleOf(ARGS_MOVIE_ID to movieUiState.id)
+        )
     }
 
     companion object {

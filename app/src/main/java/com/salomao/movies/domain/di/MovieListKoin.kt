@@ -5,6 +5,8 @@ import com.salomao.movies.data.repository.MovieRepositoryImpl
 import com.salomao.movies.data.service.GenreService
 import com.salomao.movies.data.service.MovieService
 import com.salomao.movies.domain.builder.createRetrofit
+import com.salomao.movies.domain.provider.GenreListProvider
+import com.salomao.movies.domain.provider.GenreListProviderImpl
 import com.salomao.movies.domain.repository.GenreRepository
 import com.salomao.movies.domain.repository.MovieRepository
 import com.salomao.movies.domain.usecase.GetGenreListUseCase
@@ -24,7 +26,8 @@ private val loadKoinModule by lazy {
         serviceModule,
         repositoryModule,
         viewModelModule,
-        useCaseModule
+        useCaseModule,
+        providerModule
     )
 }
 
@@ -38,7 +41,9 @@ private val viewModelModule: Module = module {
         MovieListViewModel(
             getMovieListUseCase = get(),
             getGenreListUseCase = get(),
-            dateProvider = get()
+            dateProvider = get(),
+            genreListProvider = get(),
+            stringProvider = get()
         )
     }
 }
@@ -51,4 +56,8 @@ private val repositoryModule = module {
 private val useCaseModule = module {
     single<GetMovieListUseCase> { GetMovieListUseCaseImpl(repository = get()) }
     single<GetGenreListUseCase> { GetGenreListUseCaseImpl(repository = get()) }
+}
+
+private val providerModule = module {
+    factory<GenreListProvider> { GenreListProviderImpl() }
 }

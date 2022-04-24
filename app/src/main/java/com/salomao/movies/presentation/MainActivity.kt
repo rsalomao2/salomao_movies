@@ -3,14 +3,12 @@ package com.salomao.movies.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.salomao.movies.R
 
+
 class MainActivity : AppCompatActivity() {
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,14 +17,21 @@ class MainActivity : AppCompatActivity() {
         setNavigation()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        navController.popBackStack()
+    }
+
     private fun setNavigation() {
-        navController = findNavController(R.id.fragment_container)
-        navController.setGraph(R.navigation.main_nav_graph)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_fragment
+        ) as NavHostFragment
+        navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        navController.popBackStack()
+        return super.onSupportNavigateUp()
     }
 }

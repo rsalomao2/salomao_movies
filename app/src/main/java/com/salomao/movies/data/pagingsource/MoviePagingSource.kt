@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.salomao.movies.data.service.MovieService
 import com.salomao.movies.domain.Constants
-import com.salomao.movies.remote.MovieResponse
+import com.salomao.movies.data.remote.MovieResponse
 import java.io.IOException
 import retrofit2.HttpException
 

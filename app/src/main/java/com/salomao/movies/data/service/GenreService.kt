@@ -1,7 +1,7 @@
 package com.salomao.movies.data.service
 
 import com.salomao.movies.BuildConfig
-import com.salomao.movies.remote.GenreListResponse
+import com.salomao.movies.data.remote.GenreListResponse
 import retrofit2.http.GET
 
 interface GenreService {

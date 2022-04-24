@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Salomao Movies</string>
-    <string name="get_movie_list_erro">Some nice text saying sorry we not able to fetch movie list</string>
+    <string name="get_movie_list_error">Some nice text saying sorry we not able to fetch movie list</string>
     <string name="empty_list_tile">There is no Movie yet</string>
     <string name="empty_movie_list_desc">Some nice text explaining we do not have movies to show right now</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="runtime_text">%1$s minutes</string>
+    <string name="movie_detail_load_error">Sorry but we were not able to load the movie list.</string>
 </resources>
