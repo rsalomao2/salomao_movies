@@ -1,18 +1,17 @@
 package com.salomao.movies.presentation.moviedetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
+import com.salomao.movies.R
 import com.salomao.movies.databinding.FragmentMovieDetailsBinding
 import com.salomao.movies.domain.di.injectMovieDetailKoin
 import com.salomao.movies.presentation.model.MovieDetailUiState
 import com.salomao.movies.presentation.movielist.MovieListFragment
-import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetailsFragment : Fragment() {
@@ -47,22 +46,32 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun observeErrorMessage() {
-        lifecycleScope.launchWhenCreated {
-            viewModel.errorMessageFlow.collectLatest { errorMessage ->
-                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
-            }
+        viewModel.errorMessageFlow.observe(viewLifecycleOwner) { errorMessage ->
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
         }
     }
 
     private fun observeMovieDetail() {
-        lifecycleScope.launchWhenCreated {
-            viewModel.movieDetailFlow.collectLatest {
-                setupMovieDetailView(it)
-            }
+        viewModel.movieDetailFlow.observe(viewLifecycleOwner) {
+            setupMovieDetailView(it)
         }
     }
 
     private fun setupMovieDetailView(movie: MovieDetailUiState) {
-        Log.d("###", movie.toString())
+        binding.apply {
+            Glide.with(requireContext())
+                .load(movie.thumbnailUrl)
+                .centerInside()
+                .error(R.drawable.ic_empty_movie_list)
+                .into(binding.ivThumbnail)
+
+            tvTitle.text = movie.name
+            tvGenre.text = movie.genre
+            tvRuntime.text = movie.runTime
+            tvHomePage.text = movie.homepageUrl
+            tvOverview.text = movie.overview
+            tvYear.text = movie.releaseYear
+            ratingBar.rating = movie.score
+        }
     }
 }

@@ -1,7 +1,9 @@
 package com.salomao.movies.presentation.moviedetail
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.salomao.movies.R
 import com.salomao.movies.domain.model.GenreModel
@@ -10,7 +12,6 @@ import com.salomao.movies.domain.provider.DateProvider
 import com.salomao.movies.domain.provider.StringProvider
 import com.salomao.movies.domain.usecase.GetMovieDetailUseCase
 import com.salomao.movies.presentation.model.MovieDetailUiState
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -27,8 +28,9 @@ class MovieDetailViewModel(
     private val _movieDetailFlow = MutableStateFlow<MovieDetailUiState?>(null)
     private val _errorMessageFlow = MutableStateFlow<String?>(null)
 
-    val movieDetailFlow: Flow<MovieDetailUiState> get() = _movieDetailFlow.filterNotNull()
-    val errorMessageFlow: Flow<String> get() = _errorMessageFlow.filterNotNull()
+    val movieDetailFlow: LiveData<MovieDetailUiState>
+        get() = _movieDetailFlow.filterNotNull().asLiveData()
+    val errorMessageFlow: LiveData<String> get() = _errorMessageFlow.filterNotNull().asLiveData()
 
     fun loadMovieDetail(movieId: Int?) {
         viewModelScope.launch {

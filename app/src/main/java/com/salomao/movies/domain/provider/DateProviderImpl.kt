@@ -6,10 +6,15 @@ import java.util.Calendar
 import java.util.Locale
 
 class DateProviderImpl : DateProvider {
+    
     override fun getYearFromStringDate(dateString: String): String {
         return try {
-            val calendarFromString = getDateStringToCalendar(dateString)
-            getYear(calendarFromString)
+            if (dateString.isNotBlank()) {
+                val calendarFromString = getDateStringToCalendar(dateString)
+                if (calendarFromString != null)
+                    getYear(calendarFromString)
+                else ""
+            } else ""
         } catch (e: Exception) {
             e.printStackTrace()
             ""
@@ -20,14 +25,15 @@ class DateProviderImpl : DateProvider {
         return calendar.get(Calendar.YEAR).toString()
     }
 
-    private fun getDateStringToCalendar(givenDate: String): Calendar {
+    private fun getDateStringToCalendar(givenDate: String): Calendar? {
         val calendar: Calendar
         val sdf = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
         try {
             calendar = Calendar.getInstance()
             calendar.time = sdf.parse(givenDate)
         } catch (e: ParseException) {
-            throw e
+            e.printStackTrace()
+            return null
         }
         return calendar
     }

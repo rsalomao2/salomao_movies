@@ -45,12 +45,12 @@ Like so:<br><br>
 * [x] Display Movie Release Year
 * [x] Display Movie Genre
 
-### Detail Screen requiements ###
-* [ ] Display Movie Thumbnail
-* [ ] Display Movie Title
-* [ ] Display Movie Score
-* [ ] Display Movie Release Year
-* [ ] Display Movie Genre
-* [ ] Display Movie Overview
-* [ ] Display Movie runtime
-* [ ] Display Movie Link to film homepage
+### Detail Screen requirements ###
+* [x] Display Movie Thumbnail
+* [x] Display Movie Title
+* [x] Display Movie Score
+* [x] Display Movie Release Year
+* [x] Display Movie Genre
+* [x] Display Movie Overview
+* [x] Display Movie runtime
+* [x] Display Movie Link to film homepage
