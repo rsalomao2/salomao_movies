@@ -39,7 +39,6 @@ class MovieDetailViewModel(
                     it.toMovieUiState(it.genreIdList)
                 }.catch { e: Throwable ->
                     e.printStackTrace()
-                    Log.e(TAG, "${e.message}")
                     _errorMessageFlow.emit(stringProvider.getString(R.string.movie_detail_load_error))
                 }.collect { uiState ->
                     _movieDetailFlow.emit(uiState)
