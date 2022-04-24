@@ -3,6 +3,13 @@
 This is an app that shows a list of the most popular movies from IMDB DataBase.
 In the Home page it shows all mentioned movies and when a user clicks on one of them the apps will navigate to a screen with its detailed information. 
 
+### Git configuration ##
+As I was developing this alone I've created only two branch.
+Develop - Which has the code that are in progress. But at this stage Master is updated as well. And has a more mess of commits
+Master - Branch which has the stable code version and more clean commit history
+
+You can build the app from any of them because they are same right now.
+
 ### Project technical decisions ###
 It was designed following MVVM design pattern and the concepts of Clean Code, Clean Architecture and SOLID principles.
 The layer division was represented in the folder as this is a small project but it also could be applied encapsulating the files inside Modules. But as the project has little time to be implemented I've avoided such a task. In the end the structure was followed in order to attend the following diagram.
@@ -47,7 +54,6 @@ In order to keep the project keys safer we use BuildConfig to retrieve some sens
 To be able to load a movie list from Movie DB API, we need to provide an API TOKEN for each request. Those keys need to be set in `gradle.properties` file. So Retrofit Builder can find it.<br><br>
 Like so:<br><br>
 **API_VERSION**="3"<br>
-**API_KEY**="ef4ce17967f51af83e1464211daa7abb"<br>
 **API_TOKEN**="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2M1ZmVkMWNjMWIwZDhiOTY1NDJlNjk2NjY3YjQ0MyIsInN1YiI6IjYyNWY0YTI2MzI0ODliMDA1MDQ0ZTQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtpb0BHPTKt6kV1oYglWbb5KEjQ9oTxoaBfhg3WB1JA"<br>
 
 ## Requirements ##
