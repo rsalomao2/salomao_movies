@@ -1,4 +1,4 @@
-package com.salomao.movies.remote
+package com.salomao.movies.data.remote
 
 import com.google.gson.annotations.SerializedName
 

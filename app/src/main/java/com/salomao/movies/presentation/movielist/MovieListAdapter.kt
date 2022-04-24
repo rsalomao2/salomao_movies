@@ -37,7 +37,7 @@ class MovieListAdapter(
                 tvTitle.text = itemUiState.name
                 tvGenre.text = itemUiState.genre
                 ratingBar.rating = itemUiState.score
-                tvYear.text = itemUiState.releaseDate
+                tvYear.text = itemUiState.releaseYear
 
                 Glide.with(binding.root.context)
                     .load(itemUiState.thumbnailUrl)

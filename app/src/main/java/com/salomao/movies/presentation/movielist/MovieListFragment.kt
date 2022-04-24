@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -45,6 +46,28 @@ class MovieListFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        observeMovieList()
+        observeEmptyListView()
+        observeErrorMessage()
+    }
+
+    private fun observeErrorMessage() {
+        lifecycleScope.launchWhenCreated {
+            viewModel.errorMessageFlow.collectLatest { errorMessage ->
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun observeEmptyListView() {
+        lifecycleScope.launchWhenCreated {
+            viewModel.showEmptyListViewFlow.collectLatest { show ->
+                binding.emptyMovieList.container.isVisible = show
+            }
+        }
+    }
+
+    private fun observeMovieList() {
         lifecycleScope.launchWhenCreated {
             viewModel.listLiveData.collectLatest {
                 movieAdapter.submitData(it)
