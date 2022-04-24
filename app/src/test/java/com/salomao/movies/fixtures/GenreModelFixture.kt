@@ -1,4 +1,4 @@
-package com.salomao.movies.presentation
+package com.salomao.movies.fixtures
 
 import com.salomao.movies.domain.model.GenreModel
 import com.salomao.movies.domain.model.MovieDetailModel

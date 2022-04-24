@@ -5,9 +5,9 @@ import com.salomao.movies.R
 import com.salomao.movies.domain.provider.DateProvider
 import com.salomao.movies.domain.provider.StringProvider
 import com.salomao.movies.domain.usecase.GetMovieDetailUseCase
-import com.salomao.movies.presentation.MovieDetailModelFixture.fakeMovieDetailModel
-import com.salomao.movies.presentation.MovieUiStateFixture.fakeMovieUiState
-import com.salomao.movies.presentation.UnitTestTools.getOrAwaitValue
+import com.salomao.movies.fixtures.MovieDetailModelFixture.fakeMovieDetailModel
+import com.salomao.movies.fixtures.MovieUiStateFixture.fakeMovieUiState
+import com.salomao.movies.fixtures.UnitTestTools.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow

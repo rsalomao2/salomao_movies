@@ -1,4 +1,4 @@
-package com.salomao.movies.presentation
+package com.salomao.movies.fixtures
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

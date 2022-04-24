@@ -8,6 +8,7 @@ It was designed following MVVM design pattern and the concepts of Clean Code, Cl
 The layer division was represented in the folder as this is a small project but it also could be applied encapsulating the files inside Modules. But as the project has little time to be implemented I've avoided such a task. In the end the structure was followed in order to attend the following diagram.
 The app is customized for cell phones of different sizes, but it is not yet designed for tablets or other devices. The MVVM holds the data instances which allow it to work on Portrait and LandScape.
 The code is not fully covered by unit test due to the small deadline so I left a unit tested only few public properties/function of ViewModel and Repository only. But I've worked in projects with integrated tests and UI tests as well.
+To be able to run all unit tests just execute `./gradlew testDebugUnitTest` in the Android Studio terminal.
 
 <img width="527" alt="Screen Shot 2022-04-24 at 2 43 28 PM" src="https://user-images.githubusercontent.com/12714219/164989386-21664bce-6c83-40cd-893a-39a073880d2c.png">
 
@@ -62,7 +63,6 @@ I've created these tasks below to help me and whoever is reviewing the code, the
 * [x] Explain design/architecture choice
 * [x] List of third party libraries and why I had used it
 * [x] Create Private Repository
-* [ ] Add [matheus.romao@arctouch.com](mailto:matheus.romao@arctouch.com) as a collaborator
 * [x] Unit Tests
 
 ### Main Screen requirements ###

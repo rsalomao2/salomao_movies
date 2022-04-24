@@ -1,6 +1,6 @@
-package com.salomao.movies.presentation
+package com.salomao.movies.fixtures
 
-import com.salomao.movies.presentation.MovieDetailModelFixture.fakeMovieDetailModel
+import com.salomao.movies.fixtures.MovieDetailModelFixture.fakeMovieDetailModel
 import com.salomao.movies.presentation.model.MovieDetailUiState
 
 /**
