@@ -56,37 +56,4 @@ Like so:<br><br>
 **API_VERSION**="3"<br>
 **API_TOKEN**="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2M1ZmVkMWNjMWIwZDhiOTY1NDJlNjk2NjY3YjQ0MyIsInN1YiI6IjYyNWY0YTI2MzI0ODliMDA1MDQ0ZTQzNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtpb0BHPTKt6kV1oYglWbb5KEjQ9oTxoaBfhg3WB1JA"<br>
 
-## Requirements ##
-I've created these tasks below to help me and whoever is reviewing the code, the big picture of the amount of tasks and requirements was fulfilled in the challenge. As this is a private repository I believe it is ok to leave it here, but please let me know if I should remove it.
-
-### General requirements ###
-* [x] Load Movies from Movie DB
-* [x] Paginate the requests
-* [x] Works on LandScape
-* [x] Works on Portrait
-* [x] README file
-* [x] Instructions required to build and run the app
-* [x] Explain design/architecture choice
-* [x] List of third party libraries and why I had used it
-* [x] Create Private Repository
-* [x] Unit Tests
-
-### Main Screen requirements ###
-* [x] Display Movie list
-* [x] Display Movie Thumbnail
-* [x] Display Movie Title
-* [x] Display Movie Score
-* [x] Display Movie Release Year
-* [x] Display Movie Genre
-
-### Detail Screen requirements ###
-* [x] Display Movie Thumbnail
-* [x] Display Movie Title
-* [x] Display Movie Score
-* [x] Display Movie Release Year
-* [x] Display Movie Genre
-* [x] Display Movie Overview
-* [x] Display Movie runtime
-* [x] Display Movie Link to film homepage
-
 Designed and developed by Rodrigo Salomão
