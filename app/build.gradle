@@ -16,7 +16,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "UNSPLASH_ACCESS_KEY", unsplash_access_key)
+
         buildConfigField("String", "MOVIE_DB_TOKEN", API_TOKEN)
         buildConfigField("String", "MOVIE_DB_API_VERSION", API_VERSION)
     }
