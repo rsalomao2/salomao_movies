@@ -49,6 +49,8 @@ Enough talk let's try it out
 To be able to build the project you will need a device with API 21 (Android Lollipop). Before building it you will need to set some sensitive keys that were not loaded to the repository. You can even use the ones in the bellow section or yours.
 After this is set you just need to sync your gradle and build the app.
 
+IF YOU FACE ANY `SSLHandshakeException` EXCEPTION AND ARE USING A EMULATOR, TRY TO COLD BOOT, AND TRY AGAIN PLEASE.
+
 ### Keys to load the movies ###
 In order to keep the project keys safer we use BuildConfig to retrieve some sensitive information.
 To be able to load a movie list from Movie DB API, we need to provide an API TOKEN for each request. Those keys need to be set in `gradle.properties` file. So Retrofit Builder can find it.<br><br>
